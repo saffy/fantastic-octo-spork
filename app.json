@@ -1,7 +1,6 @@
 {
-  "name": "API.AI webhook demonstration",
-  "description": "API.AI webhook demonstration",
-  "repository": "https://github.com/api-ai/apiai-weather-webhook-sample",
-  "logo": "http://xvir.github.io/img/apiai.png",
+  "name": "Rose's API.ai webhook",
+  "description": "An example webhook",
+  "repository": "https://github.com/saffy/fantastic-octo-spork",
   "keywords": ["api.ai", "natural language"]
 }
