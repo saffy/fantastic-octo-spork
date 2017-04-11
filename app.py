@@ -23,6 +23,8 @@ app = Flask(__name__)
 @app.route('/webhook', methods=['POST'])
 def webhook():
     req = request.get_json(silent=True, force=True)
+    print("Headers:")
+    print(request.headers)
 
     print("Request:")
     print(json.dumps(req, indent=4))
@@ -59,7 +61,10 @@ def makeWebhookResult(data):
     k = random.randint(1, max(1,len(names)-1))
     chosen_ones = random.sample(names, k)
 
-    speech = "I choose " + ", ".join(chosen_ones)
+    if len(chosen_ones) == 1:
+        speech = "I choose " + chosen_ones[0]
+    else:
+        speech = "I choose " + ", ".join(chosen_ones[:-1]) + " and " + chosen_ones[-1]
 
     print("Response:")
     print(speech)
