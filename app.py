@@ -29,8 +29,9 @@ def webhook():
     res = processRequest(req)
 
     res = json.dumps(res, indent=4)
-    # print(res)
+
     r = make_response(res)
+
     r.headers['Content-Type'] = 'application/json'
     return r
 
@@ -41,19 +42,21 @@ def processRequest(req):
 
     result = req.get("result")
 
-    data = json.loads(result)
+    data = result.get("parameters")
+
     res = makeWebhookResult(data)
+
     return res
 
 
 def makeWebhookResult(data):
-    parameters = result.get("parameters")
-    names = parameters.get("names")
+    names = data.get("names")
 
     if names is None:
         return {}
 
-    # print(json.dumps(item, indent=4))
+    print("\n\n The names are: ")
+    print(json.dumps(names, indent=4))
 
     speech = "The names I got were " + ", ".join(names)
 
