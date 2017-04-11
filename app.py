@@ -10,6 +10,7 @@ from urllib.error import HTTPError
 
 import json
 import os
+import random
 
 from flask import Flask
 from flask import request
@@ -55,10 +56,10 @@ def makeWebhookResult(data):
     if names is None:
         return {}
 
-    print("\n\n The names are: ")
-    print(json.dumps(names, indent=4))
+    k = random.randint(1, max(1,len(names)-1))
+    chosen_ones = random.sample(names, k)
 
-    speech = "The names I got were " + ", ".join(names)
+    speech = "I choose " + ", ".join(chosen_ones)
 
     print("Response:")
     print(speech)
