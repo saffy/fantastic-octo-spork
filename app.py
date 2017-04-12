@@ -24,8 +24,11 @@ app = Flask(__name__)
 def webhook():
     req = request.get_json(silent=True, force=True)
 
-    authorization = request.authorization
-    print(authorization)
+    username = request.authorization.get("username")
+    password = request.authorization.get("password")
+
+    print(username, password)
+
 
     print("Request:")
     print(json.dumps(req, indent=4))
