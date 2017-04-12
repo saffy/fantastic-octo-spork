@@ -16,6 +16,8 @@ from flask import Flask
 from flask import request
 from flask import make_response
 
+CREDENTIALS = ("rose", "anna")
+
 # Flask app should start in global layout
 app = Flask(__name__)
 
@@ -27,16 +29,15 @@ def webhook():
     username = request.authorization.get("username")
     password = request.authorization.get("password")
 
-    print(username, password)
-
-
     print("Request:")
     print(json.dumps(req, indent=4))
 
-    res = processRequest(req)
+    if (username, password) == CREDENTIALS:
+        res = processRequest(req)
+    else:
+        res = {}
 
     res = json.dumps(res, indent=4)
-
     r = make_response(res)
 
     r.headers['Content-Type'] = 'application/json'
