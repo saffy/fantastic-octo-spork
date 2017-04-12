@@ -33,8 +33,10 @@ def webhook():
     print(json.dumps(req, indent=4))
 
     if (username, password) == CREDENTIALS:
+        print("Authentication successful")
         res = processRequest(req)
     else:
+        print("Failed to authenticate")
         res = {}
 
     res = json.dumps(res, indent=4)
